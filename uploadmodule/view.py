@@ -9,19 +9,22 @@ from django.views.decorators.csrf import csrf_exempt
  
 
 # init logger
+UPLOAD_FILE_PATH = os.path.join(os.path.dirname(__file__), '..', '..', 'files')
+os.environ["TZ"] = "Asia/Shanghai"
+log_path = 'log/upload.log'
+
+if not os.path.exists(os.path.dirname(log_path)):
+    os.makedirs(os.path.dirname(log_path))
+
 LOG = logging.getLogger('view')
 LOG.setLevel(logging.DEBUG)
 filehandler = logging.handlers.TimedRotatingFileHandler(
-    'log/upload.log', 'midnight')
+    log_path, 'midnight')
 formatter = logging.Formatter(
     '%(asctime)s %(name)-8s %(levelname)-5s: %(message)s')
 filehandler.setFormatter(formatter)
 filehandler.suffix = "%Y%m%d"
 LOG.addHandler(filehandler)
-
-UPLOAD_FILE_PATH = '/home/centos/upload/results'
-
-os.environ["TZ"] = "Asia/Shanghai"
  
  
 @csrf_exempt
