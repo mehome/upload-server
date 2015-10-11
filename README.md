@@ -1,4 +1,4 @@
-简单的文件上传服务器
+简单的文件上传服务
 
 服务端：nginx + django后续处理
 
@@ -15,5 +15,9 @@
 
 ### Run
 
-# should run in the uwsgi.ini directory
 uwsgi -i uwsgi.ini
+(should run in the uwsgi.ini directory)
+
+### Test
+
+up.html or up.py
